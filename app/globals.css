@@ -1,0 +1,397 @@
+@import "tailwindcss";
+
+@theme {
+  --color-glass-bg: rgba(15, 23, 42, 0.45);
+  --color-glass-border: rgba(255, 255, 255, 0.08);
+  --color-glass-border-hover: rgba(255, 255, 255, 0.18);
+  --color-glass-highlight: rgba(255, 255, 255, 0.03);
+
+  --color-group-alkali: var(--group-alkali);
+  --color-group-alkaline: var(--group-alkaline);
+  --color-group-transition: var(--group-transition);
+  --color-group-post-transition: var(--group-post-transition);
+  --color-group-metalloid: var(--group-metalloid);
+  --color-group-reactive-nonmetal: var(--group-reactive-nonmetal);
+  --color-group-halogen: var(--group-halogen);
+  --color-group-noble: var(--group-noble);
+  --color-group-lanthanide: var(--group-lanthanide);
+  --color-group-actinide: var(--group-actinide);
+  --color-group-unknown: var(--group-unknown);
+}
+
+:root {
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  
+  /* Chemical categories colours (Hex tailored, elegant and modern) */
+  --group-alkali: #e11d48;         /* Alkali Metals */
+  --group-alkaline: #ea580c;        /* Alkaline Earth */
+  --group-transition: #2563eb;      /* Transition Metals */
+  --group-post-transition: #059669;/* Post-Transition Metals */
+  --group-metalloid: #0d9488;      /* Metalloids */
+  --group-reactive-nonmetal: #16a34a; /* Reactive Nonmetals */
+  --group-halogen: #ca8a04;         /* Halogens */
+  --group-noble: #9333ea;          /* Noble Gases */
+  --group-lanthanide: #db2777;     /* Lanthanides */
+  --group-actinide: #f43f5e;       /* Actinides */
+  --group-unknown: #4b5563;        /* Unknown */
+}
+
+.dark {
+  --background: #030712;
+  --foreground: #f3f4f6;
+  
+  --group-alkali: #fda4af;
+  --group-alkaline: #fed7aa;
+  --group-transition: #93c5fd;
+  --group-post-transition: #6ee7b7;
+  --group-metalloid: #5eead4;
+  --group-reactive-nonmetal: #86efac;
+  --group-halogen: #fef08a;
+  --group-noble: #d8b4fe;
+  --group-lanthanide: #fbcfe8;
+  --group-actinide: #fecdd3;
+  --group-unknown: #9ca3af;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+  transition: background-color 700ms cubic-bezier(0.16, 1, 0.3, 1), color 700ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Custom Mesh Gradient Background animation */
+.mesh-gradient-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -10;
+  background-color: var(--background);
+  background-image: 
+    radial-gradient(at 10% 20%, rgba(99, 102, 241, 0.05) 0px, transparent 50%),
+    radial-gradient(at 90% 10%, rgba(168, 85, 247, 0.05) 0px, transparent 50%),
+    radial-gradient(at 50% 80%, rgba(20, 184, 166, 0.04) 0px, transparent 50%),
+    radial-gradient(at 80% 90%, rgba(59, 130, 246, 0.05) 0px, transparent 50%);
+  background-size: 200% 200%;
+  animation: mesh-movement 25s ease infinite alternate;
+  transition: background-color 700ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dark .mesh-gradient-bg {
+  background-image: 
+    radial-gradient(at 10% 20%, rgba(99, 102, 241, 0.15) 0px, transparent 50%),
+    radial-gradient(at 90% 10%, rgba(168, 85, 247, 0.15) 0px, transparent 50%),
+    radial-gradient(at 50% 80%, rgba(236, 72, 153, 0.1) 0px, transparent 50%),
+    radial-gradient(at 80% 90%, rgba(20, 184, 166, 0.12) 0px, transparent 50%),
+    radial-gradient(at 20% 80%, rgba(59, 130, 246, 0.15) 0px, transparent 50%);
+}
+
+@keyframes mesh-movement {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 100%;
+  }
+}
+
+/* ==================== Glassmorphism Styles ==================== */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  box-shadow: 0 8px 32px 0 rgba(15, 23, 42, 0.06);
+  transition: background 700ms cubic-bezier(0.16, 1, 0.3, 1), border-color 700ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 700ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dark .glass-panel {
+  background: rgba(15, 23, 42, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.glass-panel-light {
+  background: rgba(15, 23, 42, 0.02);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(15, 23, 42, 0.04);
+  transition: background 700ms cubic-bezier(0.16, 1, 0.3, 1), border-color 700ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dark .glass-panel-light {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.glass-input {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  color: #0f172a;
+  transition: all 700ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dark .glass-input {
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.glass-input:focus {
+  border-color: rgba(99, 102, 241, 0.4);
+  box-shadow: 0 0 15px rgba(99, 102, 241, 0.15);
+  outline: none;
+}
+
+.glass-btn {
+  background: rgba(15, 23, 42, 0.04);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  color: #0f172a;
+  transition: all 700ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dark .glass-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+.glass-btn:hover {
+  background: rgba(15, 23, 42, 0.08);
+  border-color: rgba(15, 23, 42, 0.15);
+  transform: translateY(-1px);
+}
+
+.dark .glass-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.glass-btn:active {
+  transform: translateY(1px);
+}
+
+.transition-premium {
+  transition: all 700ms cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* ==================== Element Card Styles ==================== */
+
+/* Light mode: crisp white card with category left-accent border, dark readable text */
+.element-card {
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(15, 23, 42, 0.10);
+  border-left: 3px solid var(--card-category-color, rgba(15, 23, 42, 0.15));
+  color: #1e293b;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: all 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.element-card:hover {
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.10);
+  border-color: rgba(15, 23, 42, 0.18);
+  background: rgba(255, 255, 255, 0.92);
+}
+
+/* Dark mode: glassmorphic card with soft glow on hover only */
+.dark .element-card {
+  background: rgba(15, 23, 42, 0.50);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-left: 3px solid var(--card-category-color, rgba(255, 255, 255, 0.15));
+  color: #e2e8f0;
+  box-shadow: none;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.dark .element-card:hover {
+  background: rgba(15, 23, 42, 0.65);
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 18px -4px var(--card-category-color, rgba(99, 102, 241, 0.3));
+}
+
+/* Element card text contrast helpers */
+.element-card .element-number {
+  color: #475569;
+  font-weight: 600;
+}
+.dark .element-card .element-number {
+  color: #94a3b8;
+}
+
+.element-card .element-symbol {
+  color: #0f172a;
+  font-weight: 800;
+}
+.dark .element-card .element-symbol {
+  color: #f1f5f9;
+}
+
+.element-card .element-name {
+  color: #334155;
+  font-weight: 500;
+}
+.dark .element-card .element-name {
+  color: #cbd5e1;
+}
+
+.element-card .element-mass {
+  color: #64748b;
+  font-weight: 600;
+}
+.dark .element-card .element-mass {
+  color: #64748b;
+}
+
+.element-card .element-block-indicator {
+  color: #94a3b8;
+}
+.dark .element-card .element-block-indicator {
+  color: #475569;
+}
+
+/* Category accent tint on the card background — very subtle in light mode */
+.element-card[data-category="alkali"]           { --card-category-color: var(--group-alkali); }
+.element-card[data-category="alkaline"]         { --card-category-color: var(--group-alkaline); }
+.element-card[data-category="transition"]       { --card-category-color: var(--group-transition); }
+.element-card[data-category="post-transition"]  { --card-category-color: var(--group-post-transition); }
+.element-card[data-category="metalloid"]        { --card-category-color: var(--group-metalloid); }
+.element-card[data-category="reactive-nonmetal"]{ --card-category-color: var(--group-reactive-nonmetal); }
+.element-card[data-category="halogen"]          { --card-category-color: var(--group-halogen); }
+.element-card[data-category="noble"]            { --card-category-color: var(--group-noble); }
+.element-card[data-category="lanthanide"]       { --card-category-color: var(--group-lanthanide); }
+.element-card[data-category="actinide"]         { --card-category-color: var(--group-actinide); }
+.element-card[data-category="unknown"]          { --card-category-color: var(--group-unknown); }
+
+/* ==================== Custom Scrollbar ==================== */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.05);
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(15, 23, 42, 0.15);
+  border-radius: 9999px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(15, 23, 42, 0.25);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* ==================== Periodic Table Grid ==================== */
+.periodic-table-grid {
+  display: grid;
+  grid-template-columns: repeat(18, minmax(52px, 1fr));
+  gap: 3px;
+}
+
+/* Horizontal scroll wrapper for tablet and smaller laptop screens */
+.periodic-table-scroll-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: visible;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  padding-bottom: 8px;
+}
+
+/* ==================== 3D Card Effects ==================== */
+.element-card-3d-wrapper {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+/* Reflection shine overlay */
+.shine-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  background: radial-gradient(circle 80px at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(255, 255, 255, 0.12) 0%, transparent 80%);
+  z-index: 5;
+  border-radius: inherit;
+}
+
+/* ==================== F-Block Label Styles ==================== */
+.fblock-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #94a3b8;
+  padding: 2px 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  pointer-events: none;
+  user-select: none;
+}
+
+.dark .fblock-label {
+  color: #475569;
+}
+
+/* ==================== Print Styles ==================== */
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  
+  .mesh-gradient-bg, 
+  nav, 
+  header, 
+  .no-print {
+    display: none !important;
+  }
+  
+  .print-only {
+    display: block !important;
+  }
+  
+  .glass-panel {
+    background: none !important;
+    backdrop-filter: none !important;
+    border: 1px solid #ccc !important;
+    box-shadow: none !important;
+    color: black !important;
+  }
+
+  .print-page-break {
+    page-break-after: always;
+  }
+
+  input, textarea {
+    border: 1px solid #999 !important;
+    background: none !important;
+    color: black !important;
+  }
+}
