@@ -67,7 +67,7 @@ export default function Home() {
           {/* Nav Links + Glassmorphic Mode Toggle */}
           <div className="flex flex-wrap items-center gap-4">
             {/* Navigation Tabs */}
-            <nav className="flex gap-1 bg-black/10 dark:bg-black/35 p-1 rounded-xl border border-black/5 dark:border-white/5">
+            <nav className="flex gap-1 bg-slate-200/60 dark:bg-black/35 p-1 rounded-xl border border-slate-200/80 dark:border-white/5">
               {[
                 { id: "table", label: "Periodic Table", icon: Table },
                 { id: "suite", label: "Chemistry Suite", icon: Beaker },
@@ -81,7 +81,7 @@ export default function Home() {
                     className={`flex items-center gap-2 text-xs font-bold px-4 py-2.5 rounded-lg transition-premium cursor-pointer ${
                       activeTab === tab.id
                         ? "bg-white/40 dark:bg-white/10 text-zinc-900 dark:text-white shadow border border-black/10 dark:border-white/10 scale-105"
-                        : "text-zinc-600 dark:text-slate-600 dark:text-slate-400 hover:text-zinc-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5"
+                        : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5"
                     }`}
                   >
                     <Icon className="w-4 h-4" />

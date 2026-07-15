@@ -920,7 +920,7 @@ export default function ChemistryWorkspace() {
                                 </div>
                               </div>
 
-                              <div className="w-full bg-zinc-950/65 rounded-full h-2 overflow-hidden">
+                              <div className="w-full bg-slate-200 dark:bg-zinc-950/65 rounded-full h-2 overflow-hidden">
                                 <div className={`h-full rounded-full ${color.bar}`} style={{ width: `${percent}%` }} />
                               </div>
 
@@ -963,15 +963,15 @@ export default function ChemistryWorkspace() {
               <div className="flex gap-4 text-xs font-semibold">
                 <div className="flex items-center gap-1.5">
                   <span className="w-3.5 h-3.5 rounded bg-emerald-500/20 border border-emerald-500/40 block" />
-                  <span className="text-emerald-300">Soluble</span>
+                  <span className="text-emerald-700 dark:text-emerald-300">Soluble</span>
                 </div>
                 <div className="flex items-center gap-1.5">
                   <span className="w-3.5 h-3.5 rounded bg-amber-500/20 border border-amber-500/40 block" />
-                  <span className="text-amber-300">Slightly Soluble</span>
+                  <span className="text-amber-700 dark:text-amber-300">Slightly Soluble</span>
                 </div>
                 <div className="flex items-center gap-1.5">
                   <span className="w-3.5 h-3.5 rounded bg-rose-500/20 border border-rose-500/40 block" />
-                  <span className="text-rose-300">Insoluble</span>
+                  <span className="text-rose-700 dark:text-rose-300">Insoluble</span>
                 </div>
               </div>
             </div>
@@ -979,7 +979,7 @@ export default function ChemistryWorkspace() {
             <div className="overflow-x-auto border border-black/10 dark:border-white/10 rounded-2xl w-full">
               <table className="w-full text-xs min-w-[760px] border-collapse">
                 <thead>
-                  <tr className="bg-zinc-950 border-b border-white/15 text-zinc-500 dark:text-zinc-400 font-bold">
+                  <tr className="bg-slate-100 dark:bg-zinc-950 border-b border-slate-200 dark:border-white/15 text-slate-700 dark:text-zinc-400 font-bold">
                     <th className="p-3 border-r border-black/10 dark:border-white/10 text-left">Cations \ Anions</th>
                     {anionsList.map(an => (
                       <th key={an} className="p-3 text-center border-r border-black/10 dark:border-white/10 font-bold">{an}</th>
@@ -989,7 +989,7 @@ export default function ChemistryWorkspace() {
                 <tbody className="divide-y divide-white/10">
                   {cationsList.map(cat => (
                     <tr key={cat} className="hover:bg-black/5 dark:bg-white/5">
-                      <td className="p-3 bg-zinc-950/60 border-r border-black/10 dark:border-white/10 font-black text-white">{cat}</td>
+                      <td className="p-3 bg-slate-100 dark:bg-zinc-950/60 border-r border-slate-200 dark:border-white/10 font-black text-slate-900 dark:text-white">{cat}</td>
                       {anionsList.map(an => {
                         const sol = getSolubility(cat, an);
                         const isSelected = selectedSolubility && selectedSolubility.cation === cat && selectedSolubility.anion === an;
@@ -1085,7 +1085,7 @@ export default function ChemistryWorkspace() {
               <div className="flex gap-4 mt-6 items-center">
                 <button
                   onClick={() => setIsPlaying(!isPlaying)}
-                  className="glass-btn w-10 h-10 rounded-full flex items-center justify-center text-white"
+                  className="glass-btn w-10 h-10 rounded-full flex items-center justify-center text-slate-900 dark:text-white"
                 >
                   {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4 fill-white ml-0.5" />}
                 </button>
@@ -1101,7 +1101,7 @@ export default function ChemistryWorkspace() {
                     onChange={(e) => setSpeed(parseFloat(e.target.value))}
                     className="w-20 accent-indigo-500 cursor-pointer h-1 rounded"
                   />
-                  <span className="text-xs font-mono font-bold text-indigo-300 w-8">{speed}x</span>
+                  <span className="text-xs font-mono font-bold text-indigo-600 dark:text-indigo-300 w-8">{speed}x</span>
                 </div>
               </div>
             </div>

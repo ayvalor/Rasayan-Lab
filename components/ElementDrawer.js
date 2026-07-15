@@ -86,7 +86,7 @@ export default function ElementDrawer({ element, onClose }) {
           </div>
 
           {/* Drawer Tabs Navigation */}
-          <div className="flex border-b border-white/10 bg-black/20 p-2 gap-1 overflow-x-auto">
+          <div className="flex border-b border-slate-200 dark:border-white/10 bg-slate-100/80 dark:bg-black/20 p-2 gap-1 overflow-x-auto">
             {[
               { id: "overview", label: "Overview" },
               { id: "structure", label: "Structure" },
@@ -98,8 +98,8 @@ export default function ElementDrawer({ element, onClose }) {
                 onClick={() => setActiveTab(tab.id)}
                 className={`text-xs px-3.5 py-2 rounded-lg font-bold transition-all whitespace-nowrap ${
                   activeTab === tab.id
-                    ? "bg-white/10 text-white shadow-sm border border-white/15"
-                    : "text-zinc-500 dark:text-zinc-400 hover:text-white hover:bg-white/5 border border-transparent"
+                    ? "bg-white/80 dark:bg-white/10 text-slate-900 dark:text-white shadow-sm border border-slate-200 dark:border-white/15"
+                    : "text-slate-500 dark:text-zinc-400 hover:text-slate-900 dark:hover:text-white hover:bg-white/50 dark:hover:bg-white/5 border border-transparent"
                 }`}
               >
                 {tab.label}
@@ -151,9 +151,9 @@ export default function ElementDrawer({ element, onClose }) {
                       </span>
                     </div>
                     {/* Concentric visual shell rings mock */}
-                    <div className="flex gap-2 items-center justify-center p-2 bg-black/10 rounded-lg">
+                    <div className="flex gap-2 items-center justify-center p-2 bg-slate-100/70 dark:bg-black/10 rounded-lg">
                       {shells.map((val, idx) => (
-                        <div key={idx} className="flex flex-col items-center p-2 border border-black/5 dark:border-white/5 bg-black/5 dark:bg-white/5 rounded-lg w-12">
+                        <div key={idx} className="flex flex-col items-center p-2 border border-slate-200 dark:border-white/5 bg-white/60 dark:bg-white/5 rounded-lg w-12">
                           <span className="text-[9px] text-zinc-500 dark:text-zinc-400 font-bold">Shell {idx+1}</span>
                           <span className="text-sm font-black text-indigo-600 dark:text-indigo-300 mt-1">{val}</span>
                         </div>
@@ -203,7 +203,7 @@ export default function ElementDrawer({ element, onClose }) {
                 <div className="flex flex-col gap-4">
                   <div className="glass-panel-light p-3.5 rounded-xl flex flex-col gap-1">
                     <span className="text-[10px] text-zinc-500 dark:text-zinc-400 font-bold uppercase tracking-wider">Quantum Electron Configuration</span>
-                    <span className="text-sm font-mono font-bold text-white mt-1">{safeDisplay(element.quantumConfig)}</span>
+                    <span className="text-sm font-mono font-bold text-slate-900 dark:text-white mt-1">{safeDisplay(element.quantumConfig)}</span>
                   </div>
                   <div className="glass-panel-light p-3.5 rounded-xl flex flex-col gap-1">
                     <span className="text-[10px] text-zinc-500 dark:text-zinc-400 font-bold uppercase tracking-wider">Atomic Radius</span>
@@ -328,7 +328,7 @@ export default function ElementDrawer({ element, onClose }) {
                     <div className="flex items-center gap-2 text-red-400 font-extrabold text-[10px] uppercase tracking-wider">
                       <AlertTriangle className="w-4 h-4 text-red-400" /> Hazard & Risk Warnings
                     </div>
-                    <p className="text-xs text-red-200/80 leading-relaxed font-semibold">{element.hazardWarning}</p>
+                    <p className="text-xs text-red-700 dark:text-red-200/80 leading-relaxed font-semibold">{element.hazardWarning}</p>
                   </div>
                 )}
 
@@ -336,7 +336,7 @@ export default function ElementDrawer({ element, onClose }) {
                 <div className="glass-panel-light p-4 rounded-xl flex flex-col gap-3">
                   <div className="flex justify-between items-center">
                     <div className="flex flex-col text-left">
-                      <span className="text-xs font-bold text-white">Student Memory Mnemonic</span>
+                      <span className="text-xs font-bold text-slate-900 dark:text-white">Student Memory Mnemonic</span>
                       <span className="text-[10px] text-zinc-500 dark:text-zinc-400">Helpful rhyme to memorize chemistry groups</span>
                     </div>
                     <button
@@ -371,7 +371,7 @@ export default function ElementDrawer({ element, onClose }) {
           </div>
           
           {/* Footer branding */}
-          <div className="p-4 bg-black/40 border-t border-black/5 dark:border-white/5 text-center text-[10px] text-zinc-500 dark:text-zinc-400 font-mono">
+          <div className="p-4 bg-slate-100/80 dark:bg-black/40 border-t border-slate-200 dark:border-white/5 text-center text-[10px] text-slate-500 dark:text-zinc-400 font-mono">
             Rasayan Lab Universal Studio v1.0.0
           </div>
         </motion.div>

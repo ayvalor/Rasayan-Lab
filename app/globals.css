@@ -20,21 +20,21 @@
 }
 
 :root {
-  --background: #f8fafc;
+  --background: #eef2f7;
   --foreground: #0f172a;
   
-  /* Chemical categories colours (Hex tailored, elegant and modern) */
-  --group-alkali: #e11d48;         /* Alkali Metals */
-  --group-alkaline: #ea580c;        /* Alkaline Earth */
-  --group-transition: #2563eb;      /* Transition Metals */
-  --group-post-transition: #059669;/* Post-Transition Metals */
-  --group-metalloid: #0d9488;      /* Metalloids */
-  --group-reactive-nonmetal: #16a34a; /* Reactive Nonmetals */
-  --group-halogen: #ca8a04;         /* Halogens */
-  --group-noble: #9333ea;          /* Noble Gases */
-  --group-lanthanide: #db2777;     /* Lanthanides */
-  --group-actinide: #f43f5e;       /* Actinides */
-  --group-unknown: #4b5563;        /* Unknown */
+  /* Chemical categories colours — refined deeper tones for light mode glass surfaces */
+  --group-alkali: #be123c;         /* Alkali Metals — deeper rose */
+  --group-alkaline: #c2410c;        /* Alkaline Earth — deeper orange */
+  --group-transition: #1d4ed8;      /* Transition Metals — deeper blue */
+  --group-post-transition: #047857;/* Post-Transition Metals — deeper emerald */
+  --group-metalloid: #0f766e;      /* Metalloids — deeper teal */
+  --group-reactive-nonmetal: #15803d; /* Reactive Nonmetals — deeper green */
+  --group-halogen: #a16207;         /* Halogens — deeper amber */
+  --group-noble: #7c3aed;          /* Noble Gases — deeper violet */
+  --group-lanthanide: #be185d;     /* Lanthanides — deeper pink */
+  --group-actinide: #e11d48;       /* Actinides — deeper rose */
+  --group-unknown: #374151;        /* Unknown — deeper gray */
 }
 
 .dark {
@@ -72,10 +72,11 @@ body {
   z-index: -10;
   background-color: var(--background);
   background-image: 
-    radial-gradient(at 10% 20%, rgba(99, 102, 241, 0.05) 0px, transparent 50%),
-    radial-gradient(at 90% 10%, rgba(168, 85, 247, 0.05) 0px, transparent 50%),
-    radial-gradient(at 50% 80%, rgba(20, 184, 166, 0.04) 0px, transparent 50%),
-    radial-gradient(at 80% 90%, rgba(59, 130, 246, 0.05) 0px, transparent 50%);
+    radial-gradient(at 10% 20%, rgba(99, 102, 241, 0.10) 0px, transparent 50%),
+    radial-gradient(at 90% 10%, rgba(168, 85, 247, 0.09) 0px, transparent 50%),
+    radial-gradient(at 50% 80%, rgba(20, 184, 166, 0.08) 0px, transparent 50%),
+    radial-gradient(at 80% 90%, rgba(59, 130, 246, 0.10) 0px, transparent 50%),
+    radial-gradient(at 30% 50%, rgba(244, 63, 94, 0.06) 0px, transparent 50%);
   background-size: 200% 200%;
   animation: mesh-movement 25s ease infinite alternate;
   transition: background-color 700ms cubic-bezier(0.16, 1, 0.3, 1);
@@ -103,12 +104,17 @@ body {
 }
 
 /* ==================== Glassmorphism Styles ==================== */
+
+/* Primary glass surface — Clear Crystal Glass */
 .glass-panel {
-  background: rgba(255, 255, 255, 0.65);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(15, 23, 42, 0.08);
-  box-shadow: 0 8px 32px 0 rgba(15, 23, 42, 0.06);
+  background: rgba(255, 255, 255, 0.42);
+  backdrop-filter: blur(18px) saturate(1.2);
+  -webkit-backdrop-filter: blur(18px) saturate(1.2);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  box-shadow:
+    0 8px 32px rgba(15, 23, 42, 0.06),
+    0 2px 8px rgba(15, 23, 42, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
   transition: background 700ms cubic-bezier(0.16, 1, 0.3, 1), border-color 700ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 700ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -118,24 +124,28 @@ body {
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
 
+/* Secondary glass surface — Lighter, used for cards within glass panels */
 .glass-panel-light {
-  background: rgba(15, 23, 42, 0.02);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(15, 23, 42, 0.04);
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03);
   transition: background 700ms cubic-bezier(0.16, 1, 0.3, 1), border-color 700ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .dark .glass-panel-light {
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: none;
 }
 
+/* Glass input fields */
 .glass-input {
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.70);
   border: 1px solid rgba(15, 23, 42, 0.12);
   color: #0f172a;
-  transition: all 700ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition: background 300ms ease, border-color 300ms ease, box-shadow 300ms ease;
 }
 
 .dark .glass-input {
@@ -145,16 +155,17 @@ body {
 }
 
 .glass-input:focus {
-  border-color: rgba(99, 102, 241, 0.4);
-  box-shadow: 0 0 15px rgba(99, 102, 241, 0.15);
+  border-color: rgba(99, 102, 241, 0.5);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12), 0 0 15px rgba(99, 102, 241, 0.08);
   outline: none;
 }
 
+/* Glass buttons */
 .glass-btn {
-  background: rgba(15, 23, 42, 0.04);
-  border: 1px solid rgba(15, 23, 42, 0.08);
-  color: #0f172a;
-  transition: all 700ms cubic-bezier(0.16, 1, 0.3, 1);
+  background: rgba(15, 23, 42, 0.05);
+  border: 1px solid rgba(15, 23, 42, 0.10);
+  color: #1e293b;
+  transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .dark .glass-btn {
@@ -164,9 +175,10 @@ body {
 }
 
 .glass-btn:hover {
-  background: rgba(15, 23, 42, 0.08);
-  border-color: rgba(15, 23, 42, 0.15);
+  background: rgba(15, 23, 42, 0.10);
+  border-color: rgba(15, 23, 42, 0.18);
   transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
 }
 
 .dark .glass-btn:hover {
@@ -184,22 +196,31 @@ body {
 
 /* ==================== Element Card Styles ==================== */
 
-/* Light mode: crisp white card with category left-accent border, dark readable text */
+/* Light mode: Clear Crystal Glass card with category left-accent border, deep readable text */
 .element-card {
-  background: rgba(255, 255, 255, 0.82);
-  border: 1px solid rgba(15, 23, 42, 0.10);
-  border-left: 3px solid var(--card-category-color, rgba(15, 23, 42, 0.15));
+  background: rgba(255, 255, 255, 0.42);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-left: 3px solid var(--card-category-color, rgba(15, 23, 42, 0.20));
   color: #1e293b;
-  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  transition: all 200ms cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow:
+    0 2px 8px rgba(15, 23, 42, 0.05),
+    0 1px 2px rgba(15, 23, 42, 0.03),
+    inset 0 1px 0 rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.3s ease;
 }
 
 .element-card:hover {
-  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.10);
-  border-color: rgba(15, 23, 42, 0.18);
-  background: rgba(255, 255, 255, 0.92);
+  box-shadow:
+    0 8px 24px rgba(15, 23, 42, 0.10),
+    0 4px 10px rgba(15, 23, 42, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  border-color: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.58);
 }
 
 /* Dark mode: glassmorphic card with soft glow on hover only */
@@ -219,10 +240,10 @@ body {
   box-shadow: 0 0 18px -4px var(--card-category-color, rgba(99, 102, 241, 0.3));
 }
 
-/* Element card text contrast helpers */
+/* Element card text contrast — deep, rich colors for light mode */
 .element-card .element-number {
-  color: #475569;
-  font-weight: 600;
+  color: #334155;
+  font-weight: 700;
 }
 .dark .element-card .element-number {
   color: #94a3b8;
@@ -237,23 +258,23 @@ body {
 }
 
 .element-card .element-name {
-  color: #334155;
-  font-weight: 500;
+  color: #1e293b;
+  font-weight: 600;
 }
 .dark .element-card .element-name {
   color: #cbd5e1;
 }
 
 .element-card .element-mass {
-  color: #64748b;
-  font-weight: 600;
+  color: #475569;
+  font-weight: 700;
 }
 .dark .element-card .element-mass {
   color: #64748b;
 }
 
 .element-card .element-block-indicator {
-  color: #94a3b8;
+  color: #64748b;
 }
 .dark .element-card .element-block-indicator {
   color: #475569;
@@ -279,7 +300,7 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(15, 23, 42, 0.05);
+  background: rgba(15, 23, 42, 0.06);
 }
 
 .dark ::-webkit-scrollbar-track {
@@ -287,7 +308,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(15, 23, 42, 0.15);
+  background: rgba(15, 23, 42, 0.18);
   border-radius: 9999px;
 }
 
@@ -296,7 +317,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(15, 23, 42, 0.25);
+  background: rgba(15, 23, 42, 0.30);
 }
 
 .dark ::-webkit-scrollbar-thumb:hover {
@@ -345,7 +366,7 @@ body {
   font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: #94a3b8;
+  color: #475569;
   padding: 2px 6px;
   display: flex;
   align-items: center;
